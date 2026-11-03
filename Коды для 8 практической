@@ -1,0 +1,52 @@
+ЗАДАНИЕ 1.
+#include <iostream>
+using namespace std;
+
+long long p(long long a, long long n) {
+    long long r = 1;
+    while (n > 0) {
+        if (n % 2 == 1) r = r * a;
+        a = a * a;
+        n = n / 2;
+    }
+    return r;
+}
+
+int main() {
+    long long a, n;
+    cin >> a >> n;
+    cout << p(a, n) << endl;
+    return 0;
+}
+ЗАДАНИЕ 2.
+#include <iostream>
+using namespace std;
+
+long long g(long long a, long long b) {
+    if (b == 0) return a;
+    return g(b, a % b);
+}
+
+int main() {
+    long long a, b;
+    cin >> a >> b;
+    cout << g(a, b) << endl;
+    return 0;
+}
+ЗАДАНИЕ 3.
+#include <iostream>
+using namespace std;
+
+void h(int n, int a, int b, int c) {
+    if (n == 0) return;
+    h(n - 1, a, c, b);
+    cout << "Ingredient " << n << " move from " << a << " to " << c << endl;
+    h(n - 1, b, a, c);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    h(n, 1, 2, 3);
+    return 0;
+}
