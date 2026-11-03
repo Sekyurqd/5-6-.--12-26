@@ -1,0 +1,68 @@
+1.
+#include <iostream>
+using namespace std;
+
+int main() {
+    double X, Y;
+    cin >> X >> Y;
+    int day = 1;
+    while (X < Y) {
+        X *= 1.1;
+        day++;
+    }
+    cout << day;
+    return 0;
+}
+2.
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int A, B;
+    cin >> A >> B;
+    vector<string> ops;
+    while (A != B) {
+        if (A % 2 == 0 && A / 2 >= B) {
+            A /= 2;
+            ops.push_back(":2");
+        } else {
+            A--;
+            ops.push_back("-1");
+        }
+    }
+    reverse(ops.begin(), ops.end());
+    for (auto &s : ops) cout << s << "\n";
+    return 0;
+}
+3.
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+    vector<int> a(N);
+    for (int i = 0; i < N; i++) cin >> a[i];
+
+    int removed = 0;
+    bool changed = true;
+    while (changed) {
+        changed = false;
+        vector<int> b;
+        for (int i = 0; i < (int)a.size(); i++) {
+            if (i + 1 < (int)a.size() && a[i] == a[i+1]) {
+                removed += 2;
+                i++;
+                changed = true;
+            } else {
+                b.push_back(a[i]);
+            }
+        }
+        a = b;
+    }
+    cout << removed;
+    return 0;
+}
